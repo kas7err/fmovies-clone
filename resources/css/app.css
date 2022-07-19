@@ -1,0 +1,29 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/variants';
+
+[x-cloak] {
+    display: none !important;
+}
+
+/* .bg-zinc-800 {
+    background-color: rgb(39 39 42);
+}	
+.bg-zinc-900 {
+    background-color: rgb(24 24 27);
+}
+.bg-neutral-900 {
+    background-color: rgb(23 23 23);
+} */
+
+.theme-bg {
+    background-color: #040519;
+}
+
+.body-bg {
+    background-color: #040519e8;
+}
+.logo-bg {
+    color: #00aabe;
+}
