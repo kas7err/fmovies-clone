@@ -61,10 +61,11 @@ class PopulateMovies extends Command
         $data = Arr::collapse($data);
         $data = $this->unique_multidim_array($data, 'title');
 
-        try {
-            Movie::insert($data);
-        } catch (\Throwable $th) {
-            $this->info('unable to populate db');
+        $collection = collect($data);
+        $chunks = $collection->chunk(100);
+        foreach($chunks as $chunk)
+        {
+            Movie::insert($chunk->toArray());
         }
     }
 

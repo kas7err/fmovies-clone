@@ -51,12 +51,14 @@ class UpdateMovies extends Command
             $data = $imdb->film($movie->imdb_id, ['cache' => false]);
             $data = $this->change_key($data, "poster", "poster_url");
 
-            $genres = $this->populateGenres(explode(', ', $data['genre']));
+            $genres = $this->populateGenres($data['genres']);
 
             unset($data['id']);
-            unset($data['genre']);
+            unset($data['genres']);
             unset($data['title']);
             unset($data['technical_specs']);
+            unset($data['rating_votes']);
+
             $movie->update($data);
             $movie->genres()->sync($genres);
             $movie->save();
