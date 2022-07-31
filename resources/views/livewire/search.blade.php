@@ -16,7 +16,8 @@
         @if ($searchResult->count() > 0 && strlen($search) > 2)
             <ul>
                 @foreach ($searchResult as $tv)
-                    <a href="{{ route('showTitle', $tv->slug) }}" class="">
+                    {{-- {{dd($tv->slug)}} --}}
+                    <a href="{{ route('title', ['slug' => $tv->slug]) }}" class="">
                         <li
                             class="flex border-b items-center border-gray-700 px-2 py-1 hover:bg-gray-700 hover:text-teal-600">
                             <img src="{{ $tv->thumbnail_url }}" alt="" class="rounded-md">

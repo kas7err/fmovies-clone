@@ -165,7 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        // hmerritt\Imdb::class,
         Intervention\Image\ImageServiceProvider::class,
 
         /*

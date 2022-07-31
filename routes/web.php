@@ -5,18 +5,56 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use hmerritt\Imdb;
 use Illuminate\Support\Facades\Cache;
+use Goutte\Client;
+
 
 Route::get('/', function () {
-    // $imdb = new Imdb;
-    // $actor = $imdb->actor("nm0000093", ['cache' => false]);
-    // dd($actor);
     return view('index');
 });
 
 Route::get('/actor/{id}', function ($id) {
-    $imdb = new Imdb;
-    $actor = $imdb->actor($id, ['cache' => true]);
-    return response()->json($actor);
+
+    $client = new Client();
+    $crawler = $client->request('GET', "https://www.imdb.com/name/". $id ."/");
+
+    $actor = [];
+    $actor["name"] = "";
+    $actor["bio"] = [];
+    $actor["poster"] = "";
+    $actor["photos"] = [];
+    $actor["awards"] = "";
+
+    $name = $crawler->filter('h1.header span');
+    if($name->count() > 0) {
+        $actor['name'] = $name->text();
+    }
+
+    $poster = $crawler->filter("img#name-poster");
+    if ($poster->count() > 0) {
+        $actor["poster"] = $poster->attr("src");
+    }
+
+    $bio = $crawler->filter("#name-bio-text .inline");
+    if ($bio->count() > 0) {
+        $actor["bio"]['text'] = $bio->text();
+        $actor["bio"]['born'] = $crawler->filter("#name-born-info")->outerHtml();
+    }
+
+    $photos = $crawler->filter(".mediastrip a > img");
+    if ($photos->count() > 0) {
+        $photos->each(function ($node) use(&$actor){
+            $actor['photos'][] = $node->attr('loadlate');
+        });
+    }
+
+    $awards = $crawler->filter("span.awards-blurb");
+    if ($awards->count() > 0) {
+        $awards->each(function ($node) use(&$actor){
+            $actor['awards'] .=  $node->innerText();
+        });
+    }
+
+    return $actor;
 });
 
 Route::get('/name/{id}', function ($id) {
@@ -29,8 +67,8 @@ Route::get('/name/{id}', function ($id) {
 
 Route::get('/title/{slug}', function ($slug) {
     $movie = Movie::with('genres')->where('slug', $slug)->first();
-    return view('frontend.showTitle', ['movie' => $movie]);
-})->name('showTitle');
+    return view('frontend.title', ['movie' => $movie]);
+})->name('title');
 
 Route::get('/movies', function () {
     $gridData = ['title' => 'Movies', 'type' => 'Movie'];

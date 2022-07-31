@@ -151,7 +151,7 @@
         }
         const genres = {!! $genres !!};
         const urlParams = getParams();
-        console.log(urlParams);
+        // console.log(urlParams);
 
         function getParams() {
             let urlPath = window.location.pathname.split('/');
@@ -211,7 +211,8 @@
 
             function toggleSort(wrapper, result) {
                 let input = $(wrapper.target).children('input')
-                input.prop("checked", !input.prop("checked"));
+                if (!input.is(":checked"))
+                    input.prop("checked", !input.prop("checked"));
 
                 const sort = {
                     default: 'Default',

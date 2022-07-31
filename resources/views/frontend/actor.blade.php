@@ -1,19 +1,11 @@
 @extends('layouts.index')
-{{-- {{ dd($actor) }} --}}
+{{-- {{ dd($id) }} --}}
 @section('content')
     <div class="container mx-auto flex flex-col md:flex-row items-center" x-data="{data:{}, loading:true}" x-init="(async () => {
-                const response = await fetch('/actor/{{ $id }}')
+                const response = await fetch('/actor/{!! $id !!}')
                 if (! response.ok) alert(`Something went wrong: ${response.status} - ${response.statusText}`)
                 data = await response.json()
                 loading = !loading
-                console.log(data)
-                data = {
-                    poster: data.actor_poster,
-                    name: data.actor_name,
-                    photos: data.actor_photos,
-                    bio: data.actor_bio,
-                    awards: data.actor_awards,
-                }
                 })()">
         <div class="flex w-full mt-10" :class="{'hidden': !loading}" style="height: 200px;">
             <div class="tenor-gif-embed" data-postid="15269201" data-share-method="host" data-aspect-ratio="1"
@@ -25,12 +17,10 @@
             <img :src="data.poster" alt="" class="max-w-fit w-96 rounded-md" style="object-fit:cover;">
             <div class="info-wrapper w-9/12 my-auto md:pl-10">
                 <h1 class="font-bold logo-bg text-5xl my-4" x-text="data.name"></h1>
-                <template x-for="bio in data.bio">
-                    <div class="wrapper-bio">
-                        <p x-text="bio.text" class="leading-normal mb-4 max-w-xl text-gray-500"></p>
-                        <p x-html="bio.born" class="leading-normal mb-4 max-w-xl text-gray-400"></p>
-                    </div>
-                </template>
+                <div class="wrapper-bio">
+                    <p x-text="data.bio.text" class="leading-normal mb-4 max-w-xl text-gray-500"></p>
+                    <p x-html="data.bio.born" class="leading-normal mb-4 max-w-xl text-gray-400"></p>
+                </div>
                 <div
                     class=" grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-x-3 gap-y-3">
                     <template x-for="photo in data.photos">
@@ -57,7 +47,7 @@
             <div
                 class=" grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-3 gap-y-4">
                 @foreach ($movies as $tv)
-                    <div class=" relative rounded shadow-lg text-white " x-data="{movie: {{ $tv }}, 
+                    <div class=" relative rounded shadow-lg text-white " x-data="{movie: {{ $tv }},
             movieInfo: false,
             ploatLength: 150,
             listGenres: function(string, length, index) {
@@ -73,7 +63,7 @@
                 return html + ratig;
             }
         }">
-                        <a href="{{ route('showTitle', $tv->slug) }}" @mouseover="movieInfo = true"
+                        <a href="{{ route('title', ['slug' => $tv->slug]) }}" @mouseover="movieInfo = true"
                             class="showInfo"><img class="w-full h-60 rounded-md" src="{{ $tv->poster_url }}"
                                 alt="{{ $tv->title }}">
 

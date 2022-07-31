@@ -2,8 +2,8 @@
     <div
         class=" grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-x-3 gap-y-4 py-8">
         @foreach ($data as $tv)
-            <div class=" relative rounded shadow-lg text-white " x-data="{ 
-                        movie: {{ $tv }}, 
+            <div class=" relative rounded shadow-lg text-white " x-data="{
+                        movie: {{ $tv }},
                         movieInfo: false,
                         ploatLength: 150,
                         listGenres: function(string, length, index) {
@@ -19,7 +19,7 @@
                             return html + ratig;
                         }
                     }">
-                <a href="{{ route('showTitle', $tv->slug) }}" @mouseover="movieInfo = true" class="showInfo"><img
+                <a href="{{ route('title', ['slug' => $tv->slug]) }}" @mouseover="movieInfo = true" class="showInfo"><img
                         class="w-full h-60 rounded-md" src="{{ $tv->poster_url }}" alt="{{ $tv->title }}">
                 </a>
                 <div x-cloak x-show="movieInfo" @mouseout.away="movieInfo = false"
