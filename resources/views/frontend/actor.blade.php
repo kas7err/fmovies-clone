@@ -1,8 +1,15 @@
 @extends('layouts.index')
-{{-- {{ dd($id) }} --}}
 @section('content')
-    <div class="container mx-auto flex flex-col md:flex-row items-center" x-data="{data:{}, loading:true}" x-init="(async () => {
-                const response = await fetch('/actor/{!! $id !!}')
+    <div class="container mx-auto flex flex-col md:flex-row items-center"
+            x-data="{
+                data:{},
+                loading:true,
+                formatBio: (text) => {
+                    return text.substring(0, 500) + (text.length > 500 ? ' ...' : '');
+                }
+            }"
+            x-init="(async () => {
+                const response = await fetch('/api/actor/{!! $id !!}')
                 if (! response.ok) alert(`Something went wrong: ${response.status} - ${response.statusText}`)
                 data = await response.json()
                 loading = !loading
@@ -14,11 +21,11 @@
             <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
         </div>
         <div class="flex w-full mt-10" :class="{'hidden': loading}">
-            <img :src="data.poster" alt="" class="max-w-fit w-96 rounded-md" style="object-fit:cover;">
+            <img :src="data.poster" alt="" class="max-w-fit w-80 rounded-md max-h-80" style="object-fit:cover;">
             <div class="info-wrapper w-9/12 my-auto md:pl-10">
                 <h1 class="font-bold logo-bg text-5xl my-4" x-text="data.name"></h1>
                 <div class="wrapper-bio">
-                    <p x-text="data.bio.text" class="leading-normal mb-4 max-w-xl text-gray-500"></p>
+                    <p x-text="formatBio(data.bio.text)" class="leading-normal mb-4 max-w-xl text-gray-500">..</p>
                     <p x-html="data.bio.born" class="leading-normal mb-4 max-w-xl text-gray-400"></p>
                 </div>
                 <div
@@ -63,7 +70,7 @@
                 return html + ratig;
             }
         }">
-                        <a href="{{ route('title', ['slug' => $tv->slug]) }}" @mouseover="movieInfo = true"
+                        <a href="{{ route('title', $tv) }}" @mouseover="movieInfo = true"
                             class="showInfo"><img class="w-full h-60 rounded-md" src="{{ $tv->poster_url }}"
                                 alt="{{ $tv->title }}">
 

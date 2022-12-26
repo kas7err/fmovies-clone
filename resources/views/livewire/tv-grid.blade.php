@@ -19,7 +19,7 @@
                             return html + ratig;
                         }
                     }">
-                <a href="{{ route('title', ['slug' => $tv->slug]) }}" @mouseover="movieInfo = true" class="showInfo"><img
+                <a href="{{ route('title', $tv) }}" @mouseover="movieInfo = true" class="showInfo"><img
                         class="w-full h-60 rounded-md" src="{{ $tv->poster_url }}" alt="{{ $tv->title }}">
                 </a>
                 <div x-cloak x-show="movieInfo" @mouseout.away="movieInfo = false"
