@@ -21,7 +21,7 @@
             <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
         </div>
         <div class="flex w-full mt-10" :class="{'hidden': loading}">
-            <img :src="data.poster" alt="" class="max-w-fit w-80 rounded-md max-h-80" style="object-fit:cover;">
+            <img :src="data.poster" alt="" class="max-w-fit w-80 rounded-md max-h-96" style="object-fit:cover;">
             <div class="info-wrapper w-9/12 my-auto md:pl-10">
                 <h1 class="font-bold logo-bg text-5xl my-4" x-text="data.name"></h1>
                 <div class="wrapper-bio">

@@ -15,10 +15,9 @@ class FrontendController extends Controller
 
     public function showActor($id)
     {
-        Cache::rememberForever($id, function () use ($id) {
+        $movies = Cache::rememberForever($id.'-movies', function () use ($id) {
             return Movie::with('genres')->whereJsonContains('cast', ['actor_id' => $id])->get();
         });
-        $movies = Cache::pull($id);
         return view('frontend.actor', ['id' => $id,  'movies' => $movies]);
     }
 
