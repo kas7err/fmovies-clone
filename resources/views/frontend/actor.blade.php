@@ -25,8 +25,7 @@
             <div class="info-wrapper w-9/12 my-auto md:pl-10">
                 <h1 class="font-bold logo-bg text-5xl my-4" x-text="data.name"></h1>
                 <div class="wrapper-bio">
-                    <p x-text="formatBio(data.bio.text)" class="leading-normal mb-4 max-w-xl text-gray-500">..</p>
-                    <p x-html="data.bio.born" class="leading-normal mb-4 max-w-xl text-gray-400"></p>
+                    <p x-text="formatBio(data.bio)" class="leading-normal mb-4 max-w-xl text-gray-500">..</p>
                 </div>
                 <div
                     class=" grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-x-3 gap-y-3">
