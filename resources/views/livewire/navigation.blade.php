@@ -26,10 +26,10 @@
                         </svg>
                     </button>
                 </div>
-                <div class="flex-1 flex items-center justify-between sm:items-stretch sm:justify-start">
+                <div class="flex-1 flex items-center justify-between">
                     <div class="flex-shrink-0 flex items-center">
-                        <img class="block lg:hidden h-8 w-auto" src="/images/fmovies.png" alt="Workflow">
-                        <img class="hidden lg:block h-8 w-auto" src="/images/fmovies.png" alt="Workflow">
+                        <img class="block lg:hidden h-8 w-auto" src="/logo.png" alt="Workflow">
+                        <img class="hidden lg:block h-8 w-auto" src="/logo.png" alt="Workflow">
                     </div>
                     <div class="hidden sm:block sm:ml-10">
                         <div class="flex space-x-4">

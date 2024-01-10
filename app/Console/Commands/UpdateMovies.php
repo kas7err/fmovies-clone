@@ -47,6 +47,7 @@ class UpdateMovies extends Command
     {
         $movies = Movie::all();
         foreach ($movies as $movie) {
+            if ($movie->slug != null) continue;
             $imdb = new Imdb;
             $data = $imdb->film($movie->imdb_id, ['cache' => false]);
             $data = $this->change_key($data, "poster", "poster_url");

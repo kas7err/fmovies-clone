@@ -50,7 +50,7 @@
                                 style="font-size:28px;">.</small>&nbsp;
                             {{ $tv->length }}</span>
                         <span class="border rounded-sm"
-                            style="padding:3px 3px 1px 3px;font-size:10px;">{{ $tv->type }}</span>
+                            style="padding:3px 3px 1px 3px;font-size:10px;">{{ \Str::contains($tv->type, 'TV') ? 'TV' : 'Movie' }}</span>
                     </div>
                 </div>
             </div>

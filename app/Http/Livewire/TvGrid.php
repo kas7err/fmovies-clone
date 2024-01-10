@@ -11,7 +11,8 @@ class TvGrid extends Component
 {
 
     public $title;
-    public $type = '';
+    public $baseType = '';
+    public $type = [];
     public $genre = '';
     public $filter = false;
     public $search = false;
@@ -52,9 +53,9 @@ class TvGrid extends Component
             return Movie::with('genres')->where('title', 'LIKE', "%{$request->q}%")->paginate($this->paginate);
         }
 
-        Cache::remember($this->type, 60 * 60, function () {
-            return Movie::with('genres')->where('type', $this->type)->paginate($this->paginate);
+        Cache::remember($this->baseType, 60 * 60, function () {
+            return Movie::with('genres')->whereIn('type', $this->type)->paginate($this->paginate);
         });
-        return Cache::pull($this->type);
+        return Cache::pull($this->baseType);
     }
 }

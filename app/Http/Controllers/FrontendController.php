@@ -28,12 +28,12 @@ class FrontendController extends Controller
 
     public function movies()
     {
-        $gridData = ['title' => 'Movies', 'type' => 'Movie'];
+        $gridData = ['title' => 'Movies', 'type' => ['Movie'], 'baseType' => 'Movie' ];
         return view('frontend.movies', ['gridData' => $gridData]);
     }
 
     public function series() {
-        $gridData = ['title' => 'TV Series', 'type' => 'TV'];
+        $gridData = ['title' => 'TV Series', 'type' => ['TV Series', 'TV Mini Series'], 'baseType' => 'TV'];
         return view('frontend.series', ['gridData' => $gridData]);
     }
 

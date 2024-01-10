@@ -1119,12 +1119,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kas7err/php-imdb-api.git",
-                "reference": "71d2afd35e6cdd0efd5cbc49f2d78abc56659440"
+                "reference": "398dc1452910899a865326bcf93d640227b10fe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kas7err/php-imdb-api/zipball/71d2afd35e6cdd0efd5cbc49f2d78abc56659440",
-                "reference": "71d2afd35e6cdd0efd5cbc49f2d78abc56659440",
+                "url": "https://api.github.com/repos/kas7err/php-imdb-api/zipball/398dc1452910899a865326bcf93d640227b10fe9",
+                "reference": "398dc1452910899a865326bcf93d640227b10fe9",
                 "shasum": ""
             },
             "require": {
@@ -1134,7 +1134,8 @@
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "2.5.2",
-                "phpunit/phpunit": "9.5.16"
+                "phpunit/phpunit": "9.5.16",
+                "symfony/var-dumper": "^6.4"
             },
             "type": "project",
             "autoload": {
@@ -1167,7 +1168,7 @@
             "support": {
                 "source": "https://github.com/kas7err/php-imdb-api/tree/search-results"
             },
-            "time": "2022-12-27T11:52:53+00:00"
+            "time": "2024-01-10T15:40:23+00:00"
         },
         {
             "name": "intervention/image",
@@ -9342,5 +9343,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
