@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\MovieResource\Pages;
 
 use App\Filament\Resources\MovieResource;
+use App\Filament\Widgets\MoviesGenresOverview;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,13 @@ class ListMovies extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getFooterWidgets(): array
+    {
+        return [
+            MoviesGenresOverview::class,
         ];
     }
 }

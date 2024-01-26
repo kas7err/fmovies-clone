@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MovieResource\Pages;
 use App\Filament\Resources\MovieResource\RelationManagers;
+use App\Filament\Widgets\MoviesGenresOverview;
 use App\Models\Movie;
 use Filament\Forms;
 use Filament\Pages\Actions\ViewAction;

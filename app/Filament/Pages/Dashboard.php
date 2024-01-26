@@ -2,17 +2,19 @@
 
 namespace App\Filament\Pages;
 
+use App\Filament\Widgets\MoviesGenresOverview;
+use App\Filament\Widgets\TopTenByGenre;
 use Filament\Pages\Dashboard as BasePage;
 
 class Dashboard extends BasePage
 {
+    /* protected static ?string $title = 'Test'; */
 
-    protected function getColumns(): int | array
+    protected function getWidgets(): array
     {
-        /* return 5; */
         return [
-            'md' => 4,
-            'xl' => 5,
+            TopTenByGenre::class,
+            MoviesGenresOverview::class,
         ];
     }
 }

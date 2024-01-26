@@ -26,14 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
-        // if (Cache::has('genres')) {
-        //     View::share('genres', Cache::pull('genres'));
-        // } else {
-        //     $genres = Cache::rememberForever('genres', function () {
-        //         return Genre::all();
-        //     });
-        //     View::share('genres', $genres);
-        // }
+        //
     }
 }
