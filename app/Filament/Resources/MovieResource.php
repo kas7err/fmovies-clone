@@ -7,6 +7,7 @@ use App\Filament\Resources\MovieResource\RelationManagers;
 use App\Filament\Widgets\MoviesGenresOverview;
 use App\Models\Movie;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Pages\Actions\ViewAction;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -26,7 +27,11 @@ class MovieResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('title'),
+                TextInput::make('year'),
+                TextInput::make('type'),
+                TextInput::make('plot'),
+                TextInput::make('imdb_id'),
             ]);
     }
 
