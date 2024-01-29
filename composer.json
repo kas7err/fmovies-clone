@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "fabpot/goutte": "^4.0",
+        "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.0.1",
         "hmerritt/imdb-api": "dev-search-results",
         "intervention/imagecache": "^2.5",
@@ -44,7 +45,8 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
+            "@php artisan vendor:publish --force --tag=livewire:assets --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -70,8 +72,8 @@
     "prefer-stable": true,
     "repositories": [
         {
-          "type": "vcs",
-          "url": "https://github.com/kas7err/php-imdb-api.git"
+            "type": "vcs",
+            "url": "https://github.com/kas7err/php-imdb-api.git"
         }
-      ]
+    ]
 }

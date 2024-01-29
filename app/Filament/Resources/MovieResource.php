@@ -9,9 +9,9 @@ use App\Models\Movie;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Actions\ViewAction;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
@@ -21,7 +21,7 @@ class MovieResource extends Resource
 {
     protected static ?string $model = Movie::class;
     protected static ?string $recordTitleAttribute = 'title';
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

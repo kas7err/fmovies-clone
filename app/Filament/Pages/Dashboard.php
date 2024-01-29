@@ -10,7 +10,7 @@ class Dashboard extends BasePage
 {
     /* protected static ?string $title = 'Test'; */
 
-    protected function getWidgets(): array
+    public function getWidgets(): array
     {
         return [
             TopTenByGenre::class,
