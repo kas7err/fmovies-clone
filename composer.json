@@ -7,28 +7,26 @@
     "require": {
         "php": "^7.3|^8.0",
         "fabpot/goutte": "^4.0",
-        "filament/filament": "^2.0",
-        "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "hmerritt/imdb-api": "dev-search-results",
         "intervention/imagecache": "^2.5",
-        "laravel/framework": "^8.65",
+        "laravel/framework": "^10.0",
         "laravel/jetstream": "^2.4",
-        "laravel/sanctum": "^2.11",
+        "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.5",
+        "livewire/livewire": "^3.0",
         "masterminds/html5": "^2.7",
         "symfony/css-selector": "^5.4"
     },
     "require-dev": {
         "doctrine/dbal": "^3.7",
-        "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "filament/upgrade": "^3.2",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.0",
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -49,8 +47,7 @@
             "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan filament:upgrade"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
