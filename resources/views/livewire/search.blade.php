@@ -8,7 +8,7 @@
                 </svg>
             </button>
         </span>
-        <input type="text" wire:model.debounce.500ms="search" wire:keydown.enter="submitSearch" placeholder="Search..."
+        <input type="text" wire:model.live.debounce.500ms="search" wire:keydown.enter="submitSearch" placeholder="Search..."
             autocomplete="off" name="q"
             class="py-2 w-72 text-sm text-white bg-gray-900 rounded-full pl-10 focus:outline-none focus:bg-white focus:text-gray-900 hover:bg-white hover:text-gray-900">
     </div>
@@ -16,7 +16,6 @@
         @if ($searchResult->count() > 0 && strlen($search) > 2)
             <ul>
                 @foreach ($searchResult as $tv)
-                    {{-- {{dd($tv->slug)}} --}}
                     <a href="{{ route('title', $tv) }}" class="">
                         <li
                             class="flex border-b items-center border-gray-700 px-2 py-1 hover:bg-gray-700 hover:text-teal-600">
